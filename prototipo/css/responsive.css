@@ -1,0 +1,307 @@
+/* ============================================================
+   INVENTARIOPRO - RESPONSIVE
+   Breakpoints: sm=640 | md=768 | lg=1024 | xl=1280
+   ============================================================ */
+
+/* ============================================================
+   XL (≥1280px) - Ajustes para pantallas muy grandes
+   ============================================================ */
+@media (min-width: 1280px) {
+  .main-content {
+    padding: var(--space-8) var(--space-10);
+  }
+}
+
+/* ============================================================
+   LG (≥1024px) — Escritorio normal
+   ============================================================ */
+@media (min-width: 1024px) {
+  .hide-desktop { display: none !important; }
+}
+
+/* ============================================================
+   MD (≤1024px) — Tablet y laptop pequeña
+   ============================================================ */
+@media (max-width: 1024px) {
+  /* Sidebar colapsada */
+  .sidebar {
+    width: var(--sidebar-width-sm);
+  }
+
+  .sidebar-brand-text,
+  .sidebar-link span,
+  .sidebar-section-label,
+  .sidebar-user-info,
+  .sidebar-link-badge {
+    display: none;
+  }
+
+  .sidebar-brand {
+    justify-content: center;
+    padding: var(--space-4);
+  }
+
+  .sidebar-item {
+    padding: 0 var(--space-2);
+  }
+
+  .sidebar-link {
+    justify-content: center;
+    padding: var(--space-3);
+  }
+
+  .sidebar-link-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .sidebar-footer {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .sidebar-user {
+    justify-content: center;
+    padding: var(--space-3);
+  }
+
+  .sidebar-section {
+    padding: 0 var(--space-2);
+  }
+
+  /* Main ajuste */
+  .topbar,
+  .main-wrapper {
+    left: var(--sidebar-width-sm);
+    margin-left: var(--sidebar-width-sm);
+  }
+
+  /* Grid reducido */
+  .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-cols-3 { grid-template-columns: repeat(2, 1fr); }
+
+  /* Login ajuste */
+  .login-visual {
+    display: none;
+  }
+  .login-form-panel {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   SM (≤768px) — Tablet vertical / Móvil grande
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Sidebar oculta */
+  .sidebar {
+    transform: translateX(-100%);
+    width: var(--sidebar-width);
+    transition: transform var(--transition-normal);
+    z-index: var(--z-sidebar);
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-brand-text,
+  .sidebar-link span,
+  .sidebar-section-label,
+  .sidebar-user-info,
+  .sidebar-link-badge {
+    display: flex;
+  }
+
+  .sidebar-link span { display: block; }
+  .sidebar-section-label { display: block; }
+
+  .sidebar-brand {
+    justify-content: flex-start;
+    padding: var(--space-5) var(--space-6);
+  }
+
+  .sidebar-item { padding: 0 var(--space-4); }
+  .sidebar-link { justify-content: flex-start; padding: var(--space-3); }
+  .sidebar-footer { padding: var(--space-4); }
+  .sidebar-user { justify-content: flex-start; padding: var(--space-3); }
+  .sidebar-section { padding: 0 var(--space-4); }
+
+  /* Topbar full width */
+  .topbar {
+    left: 0;
+    padding: 0 var(--space-4);
+  }
+
+  .main-wrapper {
+    margin-left: 0;
+  }
+
+  /* Overlay */
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgb(0 0 0 / 0.5);
+    z-index: calc(var(--z-sidebar) - 1);
+    display: none;
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+
+  /* Topbar búsqueda oculta */
+  .topbar-search { display: none; }
+
+  /* Título topbar */
+  .topbar-title { font-size: var(--text-base); }
+
+  /* Page header stack */
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-actions { width: 100%; }
+  .page-actions .btn { flex: 1; }
+
+  /* Main content padding */
+  .main-content {
+    padding: var(--space-5) var(--space-4);
+  }
+
+  /* Grids a 1 col */
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Formularios */
+  .form-grid-2,
+  .form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .form-col-span-2,
+  .form-col-span-3 {
+    grid-column: span 1;
+  }
+
+  /* Card body padding */
+  .card-body {
+    padding: var(--space-4);
+  }
+
+  .card-header {
+    padding: var(--space-4);
+  }
+
+  /* Stat cards */
+  .stat-card-value { font-size: var(--text-2xl); }
+
+  /* Tabla scroll */
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table { min-width: 600px; }
+
+  /* Pagination stack */
+  .pagination {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  /* Tabs scroll */
+  .tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+  }
+
+  /* Toolbar stack */
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-left,
+  .toolbar-right {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  /* Search full width */
+  .search-input-group { width: 100%; }
+  .search-input-group .form-control { width: 100%; }
+
+  /* Botón hamburger visible */
+  .btn-menu-toggle { display: flex !important; }
+
+  /* Hide topbar breadcrumb en móvil */
+  .topbar-breadcrumb { display: none; }
+}
+
+/* ============================================================
+   XS (≤480px) — Móvil pequeño
+   ============================================================ */
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+
+  .page-title { font-size: var(--text-xl); }
+
+  .stat-card {
+    padding: var(--space-4);
+  }
+
+  .card-body { padding: var(--space-3); }
+  .card-header { padding: var(--space-3); }
+
+  .btn { height: 36px; font-size: var(--text-xs); }
+  .btn-lg { height: 42px; }
+
+  .table th:not(:first-child):not(:last-child):not(.col-important) {
+    display: none;
+  }
+
+  .form-grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   UTILIDADES RESPONSIVE
+   ============================================================ */
+.hide-mobile  { }
+.show-mobile  { display: none; }
+
+@media (max-width: 768px) {
+  .hide-mobile  { display: none !important; }
+  .show-mobile  { display: block !important; }
+  .hide-sm      { display: none !important; }
+}
+
+/* Botón de menú hamburger (oculto en desktop) */
+.btn-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: #fff;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.btn-menu-toggle svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

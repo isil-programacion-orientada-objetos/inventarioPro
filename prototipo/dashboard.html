@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — InventarioPro</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/tables.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ====================================================
+       SIDEBAR
+       ==================================================== -->
+  <aside class="sidebar" id="sidebar">
+    <!-- Brand -->
+    <a href="dashboard.html" class="sidebar-brand">
+      <div class="sidebar-brand-icon">IP</div>
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-name">InventarioPro</span>
+        <span class="sidebar-brand-tagline">Gestión Empresarial</span>
+      </div>
+    </a>
+
+    <!-- Nav principal -->
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Principal</span>
+
+        <div class="sidebar-item">
+          <a href="dashboard.html" class="sidebar-link active">
+            <span class="sidebar-link-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </span>
+            <span>Dashboard</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Gestión</span>
+
+        <div class="sidebar-item">
+          <a href="productos.html" class="sidebar-link">
+            <span class="sidebar-link-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </span>
+            <span>Productos</span>
+          </a>
+        </div>
+
+        <div class="sidebar-item">
+          <a href="clientes.html" class="sidebar-link">
+            <span class="sidebar-link-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <span>Clientes</span>
+          </a>
+        </div>
+
+        <div class="sidebar-item">
+          <a href="ventas.html" class="sidebar-link">
+            <span class="sidebar-link-icon">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </span>
+            <span>Ventas</span>
+            <span class="sidebar-link-badge">3</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Análisis</span>
+
+        <div class="sidebar-item">
+          <a href="reportes.html" class="sidebar-link">
+            <span class="sidebar-link-icon">
+              <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </span>
+            <span>Reportes</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Sistema</span>
+
+        <div class="sidebar-item">
+          <a href="#" class="sidebar-link">
+            <span class="sidebar-link-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+            </span>
+            <span>Configuración</span>
+          </a>
+        </div>
+
+        <div class="sidebar-item">
+          <a href="login.html" class="sidebar-link">
+            <span class="sidebar-link-icon">
+              <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            </span>
+            <span>Cerrar Sesión</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Footer del sidebar -->
+    <!-- JSP: Datos del usuario autenticado -->
+    <!-- <%-- ${sessionScope.currentUser.nombre} ${sessionScope.currentUser.rol} --%> -->
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar">AV</div>
+        <div class="sidebar-user-info">
+          <!-- JSP: <span class="sidebar-user-name">${sessionScope.currentUser.nombre}</span> -->
+          <span class="sidebar-user-name">Administrador</span>
+          <!-- JSP: <span class="sidebar-user-role">${sessionScope.currentUser.rol}</span> -->
+          <span class="sidebar-user-role">Administrador del Sistema</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay móvil -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ====================================================
+       WRAPPER PRINCIPAL
+       ==================================================== -->
+  <div class="main-wrapper">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="btn-menu-toggle" id="menuToggle" type="button" aria-label="Menú">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div>
+          <h1 class="topbar-title">Dashboard</h1>
+          <nav class="topbar-breadcrumb">
+            <a href="dashboard.html">Inicio</a>
+            <span class="topbar-breadcrumb-sep">/</span>
+            <span>Dashboard</span>
+          </nav>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <span class="topbar-search-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </span>
+          <input type="text" class="topbar-search-input" placeholder="Buscar...">
+        </div>
+        <a href="#" class="topbar-btn" data-tooltip="Notificaciones">
+          <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="topbar-btn-dot"></span>
+        </a>
+        <a href="#" class="topbar-btn" data-tooltip="Ayuda">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </a>
+        <a href="login.html" class="topbar-user">
+          <div class="topbar-avatar">AV</div>
+          <!-- JSP: ${sessionScope.currentUser.nombre} -->
+          <span class="topbar-user-name hide-mobile">Administrador</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+
+      <!-- Page header -->
+      <div class="page-header">
+        <div class="page-header-info">
+          <h2 class="page-title">Resumen General</h2>
+          <!-- JSP: Fecha del servidor -->
+          <!-- <%-- <fmt:formatDate value="${now}" pattern="EEEE, dd 'de' MMMM 'de' yyyy"/> --%> -->
+          <p class="page-subtitle">Martes, 08 de Abril de 2025 &mdash; Vista general del sistema</p>
+        </div>
+        <div class="page-actions">
+          <a href="reportes.html" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            Ver reportes
+          </a>
+          <a href="ventas.html" class="btn btn-primary">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nueva Venta
+          </a>
+        </div>
+      </div>
+
+      <!-- ================================================
+           TARJETAS KPI
+           JSP: Datos cargados desde los Servlets/DAO
+           ================================================ -->
+      <div class="content-grid grid-cols-4 mb-8">
+
+        <!-- KPI 1: Productos -->
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon icon-blue">
+              <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <span class="stat-trend trend-up">
+              <span class="trend-arrow-up"></span> +12%
+            </span>
+          </div>
+          <!-- JSP: ${estadisticas.totalProductos} -->
+          <div class="stat-card-value">248</div>
+          <div class="stat-card-label">Productos en catálogo</div>
+          <div class="stat-card-footer">
+            <!-- JSP: ${estadisticas.productosActivosHoy} nuevos esta semana -->
+            <span>8 nuevos esta semana</span>
+          </div>
+        </div>
+
+        <!-- KPI 2: Clientes -->
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon icon-green">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="stat-trend trend-up">
+              <span class="trend-arrow-up"></span> +5%
+            </span>
+          </div>
+          <!-- JSP: ${estadisticas.totalClientes} -->
+          <div class="stat-card-value">1,342</div>
+          <div class="stat-card-label">Clientes registrados</div>
+          <div class="stat-card-footer">
+            <!-- JSP: ${estadisticas.clientesNuevosMes} nuevos este mes -->
+            <span>24 nuevos este mes</span>
+          </div>
+        </div>
+
+        <!-- KPI 3: Ventas del mes -->
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon icon-yellow">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <span class="stat-trend trend-up">
+              <span class="trend-arrow-up"></span> +18%
+            </span>
+          </div>
+          <!-- JSP: <fmt:formatNumber value="${estadisticas.totalVentasMes}" type="currency" currencySymbol="S/." /> -->
+          <div class="stat-card-value">S/. 48,290</div>
+          <div class="stat-card-label">Ventas del mes</div>
+          <div class="stat-card-footer">
+            <!-- JSP: ${estadisticas.ventasHoy} transacciones hoy -->
+            <span>17 transacciones hoy</span>
+          </div>
+        </div>
+
+        <!-- KPI 4: Stock bajo -->
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon icon-red">
+              <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <span class="stat-trend trend-down">
+              <span class="trend-arrow-up"></span> Alerta
+            </span>
+          </div>
+          <!-- JSP: ${estadisticas.productosStockBajo} -->
+          <div class="stat-card-value">14</div>
+          <div class="stat-card-label">Productos con stock bajo</div>
+          <div class="stat-card-footer" style="color: var(--color-danger);">
+            <!-- JSP: ${estadisticas.productosAgotados} agotados -->
+            <span>3 productos agotados</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================================================
+           FILA: GRÁFICO + ACTIVIDAD RECIENTE
+           ================================================ -->
+      <div class="content-grid grid-cols-3 mb-8" style="grid-template-columns: 2fr 1fr;">
+
+        <!-- Ventas por mes (gráfico fake) -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Ventas Mensuales</h3>
+              <p class="card-subtitle">Enero – Diciembre 2025</p>
+            </div>
+            <div class="card-actions">
+              <a href="reportes.html" class="btn btn-sm btn-secondary">Ver reporte</a>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- JSP: Aquí se insertará el gráfico generado con datos de VentaDAO.getVentasMensuales() -->
+            <!-- Placeholder visual de barras -->
+            <div class="bar-chart" style="height:160px; align-items:flex-end; gap:8px; padding:0;">
+              <div class="bar-chart-col">
+                <div class="bar-chart-bar" style="height:45%"></div>
+                <span class="bar-chart-label">Ene</span>
+              </div>
+              <div class="bar-chart-col">
+                <div class="bar-chart-bar" style="height:60%"></div>
+                <span class="bar-chart-label">Feb</span>
+              </div>
+              <div class="bar-chart-col">
+                <div class="bar-chart-bar" style="height:40%"></div>
+                <span class="bar-chart-label">Mar</span>
+              </div>
+              <div class="bar-chart-col">
+                <div class="bar-chart-bar active" style="height:78%"></div>
+                <span class="bar-chart-label">Abr</span>
+              </div>
+              <div class="bar-chart-col">
+                <div class="bar-chart-bar" style="height:55%"></div>
+                <span class="bar-chart-label">May</span>
+              </div>
+              <div class="bar-chart-col">
+                <div class="bar-chart-bar" style="height:65%"></div>
+                <span class="bar-chart-label">Jun</span>
+              </div>
+              <div class="bar-chart-col">
+                <div class="bar-chart-bar" style="height:50%"></div>
+                <span class="bar-chart-label">Jul</span>
+              </div>
+              <div class="bar-chart-col">
+                <div class="bar-chart-bar" style="height:70%"></div>
+                <span class="bar-chart-label">Ago</span>
+              </div>
+              <div class="bar-chart-col">
+                <div class="bar-chart-bar" style="height:85%"></div>
+                <span class="bar-chart-label">Sep</span>
+              </div>
+              <div class="bar-chart-col">
+                <div class="bar-chart-bar" style="height:90%"></div>
+                <span class="bar-chart-label">Oct</span>
+              </div>
+              <div class="bar-chart-col">
+                <div class="bar-chart-bar" style="height:75%"></div>
+                <span class="bar-chart-label">Nov</span>
+              </div>
+              <div class="bar-chart-col">
+                <div class="bar-chart-bar" style="height:95%"></div>
+                <span class="bar-chart-label">Dic</span>
+              </div>
+            </div>
+            <!-- Leyenda -->
+            <div class="d-flex align-center gap-6 mt-4" style="margin-top:var(--space-4); padding-top:var(--space-4); border-top:1px solid var(--color-border);">
+              <div class="d-flex align-center gap-2">
+                <span style="width:12px;height:12px;border-radius:3px;background:var(--primary-500);display:inline-block;"></span>
+                <span class="text-sm text-muted">Mes actual</span>
+              </div>
+              <div class="d-flex align-center gap-2">
+                <span style="width:12px;height:12px;border-radius:3px;background:var(--primary-200);display:inline-block;"></span>
+                <span class="text-sm text-muted">Otros meses</span>
+              </div>
+              <!-- JSP: Total anual ${estadisticas.totalAnual} -->
+              <span class="ml-auto text-sm fw-semibold">Total 2025: <span class="text-primary">S/. 285,400</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resumen rápido -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Estado del Sistema</h3>
+          </div>
+          <div class="card-body" style="padding: 0;">
+            <!-- JSP: Datos de ProductoDAO, ClienteDAO, VentaDAO -->
+            <div class="info-row" style="padding: var(--space-3) var(--space-6);">
+              <span class="info-label">Inventario total</span>
+              <!-- JSP: ${estadisticas.valorInventario} -->
+              <span class="info-value fw-semibold text-primary">S/. 124,580</span>
+            </div>
+            <div class="info-row" style="padding: var(--space-3) var(--space-6);">
+              <span class="info-label">Pedidos pendientes</span>
+              <!-- JSP: ${estadisticas.pedidosPendientes} -->
+              <span class="badge badge-warning">5 pendientes</span>
+            </div>
+            <div class="info-row" style="padding: var(--space-3) var(--space-6);">
+              <span class="info-label">Productos activos</span>
+              <!-- JSP: ${estadisticas.productosActivos} -->
+              <span class="info-value">234 / 248</span>
+            </div>
+            <div class="info-row" style="padding: var(--space-3) var(--space-6);">
+              <span class="info-label">Tasa de conversión</span>
+              <!-- JSP: ${estadisticas.tasaConversion}% -->
+              <span class="info-value">68.4%</span>
+            </div>
+            <div class="info-row" style="padding: var(--space-3) var(--space-6);">
+              <span class="info-label">Ticket promedio</span>
+              <!-- JSP: ${estadisticas.ticketPromedio} -->
+              <span class="info-value">S/. 284.30</span>
+            </div>
+            <div class="info-row" style="padding: var(--space-3) var(--space-6);">
+              <span class="info-label">Estado servidor</span>
+              <span class="badge badge-success"><span class="badge-dot"></span> Online</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <!-- JSP: Última sincronización ${estadisticas.ultimaActualizacion} -->
+            <span class="text-xs text-muted">Actualizado: hace 2 minutos</span>
+            <a href="reportes.html" class="btn btn-sm btn-primary">Detalle</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================================================
+           FILA: ÚLTIMAS VENTAS + ALERTAS STOCK
+           ================================================ -->
+      <div class="content-grid grid-cols-2">
+
+        <!-- Últimas ventas -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Últimas Ventas</h3>
+              <!-- JSP: Datos de VentaDAO.getUltimasVentas(5) -->
+              <p class="card-subtitle">Las 5 transacciones más recientes</p>
+            </div>
+            <a href="ventas.html" class="btn btn-sm btn-secondary">Ver todas</a>
+          </div>
+          <div style="overflow:hidden;">
+            <!-- JSP: <c:forEach items="${ultimasVentas}" var="venta"> -->
+            <div class="list-item">
+              <div class="list-item-icon" style="background:var(--color-success-light);color:var(--color-success);">V</div>
+              <div class="list-item-info">
+                <!-- JSP: ${venta.numeroVenta} - ${venta.cliente.nombreCompleto} -->
+                <p class="list-item-title">VTA-00145 — María García López</p>
+                <p class="list-item-subtitle">3 productos · Efectivo</p>
+              </div>
+              <div class="list-item-meta">
+                <!-- JSP: <fmt:formatNumber value="${venta.total}" type="currency" currencySymbol="S/."/> -->
+                <p class="list-item-value text-success">S/. 350.00</p>
+                <p class="list-item-date">Hoy 09:14</p>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon" style="background:var(--color-success-light);color:var(--color-success);">V</div>
+              <div class="list-item-info">
+                <p class="list-item-title">VTA-00144 — Carlos Mendoza</p>
+                <p class="list-item-subtitle">1 producto · Tarjeta</p>
+              </div>
+              <div class="list-item-meta">
+                <p class="list-item-value text-success">S/. 125.50</p>
+                <p class="list-item-date">Hoy 08:30</p>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon" style="background:var(--color-warning-light);color:var(--color-warning);">V</div>
+              <div class="list-item-info">
+                <p class="list-item-title">VTA-00143 — Ana Torres Ríos</p>
+                <p class="list-item-subtitle">5 productos · Transferencia</p>
+              </div>
+              <div class="list-item-meta">
+                <p class="list-item-value" style="color:var(--color-warning);">S/. 890.00</p>
+                <p class="list-item-date">Ayer 17:45</p>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon" style="background:var(--color-success-light);color:var(--color-success);">V</div>
+              <div class="list-item-info">
+                <p class="list-item-title">VTA-00142 — Roberto Silva</p>
+                <p class="list-item-subtitle">2 productos · Efectivo</p>
+              </div>
+              <div class="list-item-meta">
+                <p class="list-item-value text-success">S/. 210.00</p>
+                <p class="list-item-date">Ayer 14:20</p>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon" style="background:var(--color-danger-light);color:var(--color-danger);">D</div>
+              <div class="list-item-info">
+                <p class="list-item-title">VTA-00141 — Patricia Luna</p>
+                <p class="list-item-subtitle">Devolución parcial</p>
+              </div>
+              <div class="list-item-meta">
+                <p class="list-item-value text-danger">-S/. 45.00</p>
+                <p class="list-item-date">Ayer 11:05</p>
+              </div>
+            </div>
+            <!-- JSP: </c:forEach> -->
+          </div>
+        </div>
+
+        <!-- Alertas de stock -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Alertas de Inventario</h3>
+              <!-- JSP: ${alertasStock.size()} productos con stock crítico -->
+              <p class="card-subtitle">Productos que requieren reposición</p>
+            </div>
+            <a href="productos.html" class="btn btn-sm btn-secondary">Gestionar</a>
+          </div>
+          <div style="overflow:hidden;">
+            <!-- JSP: <c:forEach items="${productosStockCritico}" var="prod"> -->
+            <div class="list-item">
+              <div class="list-item-icon">PR</div>
+              <div class="list-item-info">
+                <!-- JSP: ${prod.nombre} -->
+                <p class="list-item-title">Laptop HP ProBook 440</p>
+                <p class="list-item-subtitle">SKU: TECH-0032 · Electrónicos</p>
+              </div>
+              <div class="list-item-meta">
+                <!-- JSP: Stock actual: ${prod.stockActual} / mínimo: ${prod.stockMinimo} -->
+                <span class="badge badge-danger">Stock: 2</span>
+                <p class="list-item-date">Mín: 10</p>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon">PR</div>
+              <div class="list-item-info">
+                <p class="list-item-title">Mouse Inalámbrico Logitech</p>
+                <p class="list-item-subtitle">SKU: PERI-0015 · Periféricos</p>
+              </div>
+              <div class="list-item-meta">
+                <span class="badge badge-warning">Stock: 5</span>
+                <p class="list-item-date">Mín: 15</p>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon">PR</div>
+              <div class="list-item-info">
+                <p class="list-item-title">Teclado Mecánico RGB</p>
+                <p class="list-item-subtitle">SKU: PERI-0020 · Periféricos</p>
+              </div>
+              <div class="list-item-meta">
+                <span class="badge badge-danger">Stock: 0</span>
+                <p class="list-item-date">Agotado</p>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon">PR</div>
+              <div class="list-item-info">
+                <p class="list-item-title">Monitor Samsung 24"</p>
+                <p class="list-item-subtitle">SKU: MON-0008 · Monitores</p>
+              </div>
+              <div class="list-item-meta">
+                <span class="badge badge-warning">Stock: 3</span>
+                <p class="list-item-date">Mín: 8</p>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon">PR</div>
+              <div class="list-item-info">
+                <p class="list-item-title">Impresora Canon Pixma</p>
+                <p class="list-item-subtitle">SKU: IMP-0011 · Impresoras</p>
+              </div>
+              <div class="list-item-meta">
+                <span class="badge badge-danger">Stock: 1</span>
+                <p class="list-item-date">Mín: 5</p>
+              </div>
+            </div>
+            <!-- JSP: </c:forEach> -->
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

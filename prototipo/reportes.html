@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reportes — InventarioPro</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/tables.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <a href="dashboard.html" class="sidebar-brand">
+      <div class="sidebar-brand-icon">IP</div>
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-name">InventarioPro</span>
+        <span class="sidebar-brand-tagline">Gestión Empresarial</span>
+      </div>
+    </a>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Principal</span>
+        <div class="sidebar-item">
+          <a href="dashboard.html" class="sidebar-link">
+            <span class="sidebar-link-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
+            <span>Dashboard</span>
+          </a>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Gestión</span>
+        <div class="sidebar-item">
+          <a href="productos.html" class="sidebar-link">
+            <span class="sidebar-link-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span>
+            <span>Productos</span>
+          </a>
+        </div>
+        <div class="sidebar-item">
+          <a href="clientes.html" class="sidebar-link">
+            <span class="sidebar-link-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <span>Clientes</span>
+          </a>
+        </div>
+        <div class="sidebar-item">
+          <a href="ventas.html" class="sidebar-link">
+            <span class="sidebar-link-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+            <span>Ventas</span>
+          </a>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Análisis</span>
+        <div class="sidebar-item">
+          <a href="reportes.html" class="sidebar-link active">
+            <span class="sidebar-link-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
+            <span>Reportes</span>
+          </a>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Sistema</span>
+        <div class="sidebar-item">
+          <a href="login.html" class="sidebar-link">
+            <span class="sidebar-link-icon"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span>
+            <span>Cerrar Sesión</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar">AV</div>
+        <div class="sidebar-user-info">
+          <!-- JSP: ${sessionScope.currentUser.nombre} -->
+          <span class="sidebar-user-name">Administrador</span>
+          <span class="sidebar-user-role">Administrador del Sistema</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="main-wrapper">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="btn-menu-toggle" id="menuToggle" type="button">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div>
+          <h1 class="topbar-title">Reportes</h1>
+          <nav class="topbar-breadcrumb">
+            <a href="dashboard.html">Inicio</a>
+            <span class="topbar-breadcrumb-sep">/</span>
+            <a href="#">Análisis</a>
+            <span class="topbar-breadcrumb-sep">/</span>
+            <span>Reportes</span>
+          </nav>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <span class="topbar-search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+          <input type="text" class="topbar-search-input" placeholder="Buscar...">
+        </div>
+        <a href="login.html" class="topbar-user">
+          <div class="topbar-avatar">AV</div>
+          <span class="topbar-user-name hide-mobile">Administrador</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <!-- Page header -->
+      <div class="page-header">
+        <div class="page-header-info">
+          <h2 class="page-title">Centro de Reportes</h2>
+          <p class="page-subtitle">Análisis e informes del sistema — Período: Enero – Abril 2025</p>
+        </div>
+        <div class="page-actions">
+          <a href="#" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Exportar PDF
+          </a>
+          <a href="#" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Exportar Excel
+          </a>
+          <a href="#" class="btn btn-primary">
+            <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
+            Actualizar datos
+          </a>
+        </div>
+      </div>
+
+      <!-- ================================================
+           FILTRO DE REPORTE
+           JSP: form action="${pageContext.request.contextPath}/reportes" method="GET"
+           ================================================ -->
+      <div class="card mb-8">
+        <div class="card-header">
+          <h3 class="card-title">Filtros del Reporte</h3>
+        </div>
+        <div class="card-body">
+          <form action="#" method="get">
+            <div class="form-grid form-grid-3" style="align-items:flex-end;">
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="tipoReporte">Tipo de Reporte</label>
+                <!-- JSP: name="tipo" value="${param.tipo}" -->
+                <select id="tipoReporte" name="tipo" class="form-control">
+                  <option value="VENTAS_PERIODO">Ventas por Período</option>
+                  <option value="VENTAS_CLIENTE">Ventas por Cliente</option>
+                  <option value="VENTAS_PRODUCTO">Ventas por Producto</option>
+                  <option value="INVENTARIO">Estado de Inventario</option>
+                  <option value="STOCK_BAJO">Productos con Stock Bajo</option>
+                  <option value="TOP_PRODUCTOS">Top 10 Productos más vendidos</option>
+                  <option value="TOP_CLIENTES">Top 10 Mejores Clientes</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="rFechaDesde">Fecha Desde</label>
+                <!-- JSP: name="fechaDesde" value="${param.fechaDesde}" -->
+                <input type="date" id="rFechaDesde" name="fechaDesde" class="form-control" value="2025-01-01">
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="rFechaHasta">Fecha Hasta</label>
+                <!-- JSP: name="fechaHasta" value="${param.fechaHasta}" -->
+                <input type="date" id="rFechaHasta" name="fechaHasta" class="form-control" value="2025-04-08">
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="rCategoria">Categoría</label>
+                <select id="rCategoria" name="categoriaId" class="form-control">
+                  <option value="">Todas las categorías</option>
+                  <option value="1">Electrónicos</option>
+                  <option value="2">Periféricos</option>
+                  <option value="3">Monitores</option>
+                  <option value="4">Impresoras</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="rAgrupacion">Agrupar por</label>
+                <select id="rAgrupacion" name="agrupacion" class="form-control">
+                  <option value="DIA">Día</option>
+                  <option value="SEMANA">Semana</option>
+                  <option value="MES" selected>Mes</option>
+                  <option value="TRIMESTRE">Trimestre</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label">&nbsp;</label>
+                <button type="submit" class="btn btn-primary btn-block">
+                  <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  Generar Reporte
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ================================================
+           KPIs RESUMEN
+           JSP: Datos generados por ReporteDAO
+           ================================================ -->
+      <div class="content-grid grid-cols-4 mb-8">
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon icon-green"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+            <span class="stat-trend trend-up"><span class="trend-arrow-up"></span> +22%</span>
+          </div>
+          <!-- JSP: ${reporte.totalVentasPeriodo} -->
+          <div class="stat-card-value">S/. 185,420</div>
+          <div class="stat-card-label">Ventas totales del período</div>
+          <div class="stat-card-footer">vs. S/. 151,980 período anterior</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          </div>
+          <!-- JSP: ${reporte.totalTransacciones} -->
+          <div class="stat-card-value">653</div>
+          <div class="stat-card-label">Transacciones totales</div>
+          <div class="stat-card-footer">Promedio: 54 / mes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon icon-yellow"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+          </div>
+          <!-- JSP: ${reporte.ticketPromedio} -->
+          <div class="stat-card-value">S/. 284</div>
+          <div class="stat-card-label">Ticket promedio</div>
+          <div class="stat-card-footer">vs. S/. 248 período anterior</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon icon-cyan"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            <span class="stat-trend trend-up"><span class="trend-arrow-up"></span> +5%</span>
+          </div>
+          <!-- JSP: ${reporte.clientesConVenta} -->
+          <div class="stat-card-value">312</div>
+          <div class="stat-card-label">Clientes únicos atendidos</div>
+        </div>
+      </div>
+
+      <!-- ================================================
+           FILA: GRÁFICOS
+           ================================================ -->
+      <div class="content-grid grid-cols-2 mb-8">
+
+        <!-- Ventas mensuales -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Ventas por Mes</h3>
+              <!-- JSP: Datos de ReporteDAO.getVentasMensuales(anio) -->
+              <p class="card-subtitle">Enero – Abril 2025</p>
+            </div>
+            <span class="badge badge-success">+22% vs anterior</span>
+          </div>
+          <div class="card-body">
+            <!-- Barras visuales - JSP: reemplazar con librería de gráficos (Chart.js via JSP) -->
+            <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+              <div>
+                <div class="d-flex justify-between mb-2">
+                  <!-- JSP: ${mes.nombre} / ${mes.total} -->
+                  <span class="text-sm fw-medium">Enero</span>
+                  <span class="text-sm fw-semibold text-primary">S/. 38,200</span>
+                </div>
+                <div class="progress"><div class="progress-bar" style="width:62%"></div></div>
+              </div>
+              <div>
+                <div class="d-flex justify-between mb-2">
+                  <span class="text-sm fw-medium">Febrero</span>
+                  <span class="text-sm fw-semibold text-primary">S/. 42,500</span>
+                </div>
+                <div class="progress"><div class="progress-bar" style="width:69%"></div></div>
+              </div>
+              <div>
+                <div class="d-flex justify-between mb-2">
+                  <span class="text-sm fw-medium">Marzo</span>
+                  <span class="text-sm fw-semibold text-primary">S/. 56,430</span>
+                </div>
+                <div class="progress"><div class="progress-bar" style="width:91%"></div></div>
+              </div>
+              <div>
+                <div class="d-flex justify-between mb-2">
+                  <span class="text-sm fw-medium">Abril (parcial)</span>
+                  <span class="text-sm fw-semibold text-primary">S/. 48,290</span>
+                </div>
+                <div class="progress"><div class="progress-bar progress-bar-success" style="width:78%"></div></div>
+              </div>
+            </div>
+            <div class="d-flex justify-between mt-4" style="margin-top:var(--space-6);padding-top:var(--space-4);border-top:1px solid var(--color-border);">
+              <span class="text-sm text-muted">Total acumulado</span>
+              <!-- JSP: ${reporte.totalPeriodo} -->
+              <span class="fw-bold text-primary">S/. 185,420</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top productos -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Top 5 Productos Más Vendidos</h3>
+              <!-- JSP: Datos de ReporteDAO.getTopProductos(5, fechaDesde, fechaHasta) -->
+              <p class="card-subtitle">Por monto de ventas</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+              <!-- JSP: <c:forEach items="${topProductos}" var="p" varStatus="i"> -->
+              <div class="d-flex align-center gap-3">
+                <span style="width:24px;height:24px;border-radius:50%;background:var(--primary-600);color:#fff;display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);font-weight:var(--font-bold);flex-shrink:0;">1</span>
+                <div style="flex:1;min-width:0;">
+                  <!-- JSP: ${p.nombre} -->
+                  <p class="text-sm fw-medium text-truncate">Laptop HP ProBook 440</p>
+                  <!-- JSP: ${p.cantidadVendida} unidades -->
+                  <p class="text-xs text-muted">48 unidades vendidas</p>
+                </div>
+                <!-- JSP: ${p.totalVentas} -->
+                <span class="fw-semibold text-sm" style="white-space:nowrap;">S/. 138,720</span>
+              </div>
+              <div class="d-flex align-center gap-3">
+                <span style="width:24px;height:24px;border-radius:50%;background:var(--primary-400);color:#fff;display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);font-weight:var(--font-bold);flex-shrink:0;">2</span>
+                <div style="flex:1;min-width:0;">
+                  <p class="text-sm fw-medium text-truncate">Monitor Samsung 24" FHD</p>
+                  <p class="text-xs text-muted">62 unidades vendidas</p>
+                </div>
+                <span class="fw-semibold text-sm" style="white-space:nowrap;">S/. 55,180</span>
+              </div>
+              <div class="d-flex align-center gap-3">
+                <span style="width:24px;height:24px;border-radius:50%;background:var(--primary-300);color:var(--primary-800);display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);font-weight:var(--font-bold);flex-shrink:0;">3</span>
+                <div style="flex:1;min-width:0;">
+                  <p class="text-sm fw-medium text-truncate">Audífonos Sony WH-1000XM5</p>
+                  <p class="text-xs text-muted">41 unidades vendidas</p>
+                </div>
+                <span class="fw-semibold text-sm" style="white-space:nowrap;">S/. 52,890</span>
+              </div>
+              <div class="d-flex align-center gap-3">
+                <span style="width:24px;height:24px;border-radius:50%;background:var(--gray-300);color:var(--gray-700);display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);font-weight:var(--font-bold);flex-shrink:0;">4</span>
+                <div style="flex:1;min-width:0;">
+                  <p class="text-sm fw-medium text-truncate">Teclado Mecánico RGB Redragon</p>
+                  <p class="text-xs text-muted">118 unidades vendidas</p>
+                </div>
+                <span class="fw-semibold text-sm" style="white-space:nowrap;">S/. 21,830</span>
+              </div>
+              <div class="d-flex align-center gap-3">
+                <span style="width:24px;height:24px;border-radius:50%;background:var(--gray-200);color:var(--gray-600);display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);font-weight:var(--font-bold);flex-shrink:0;">5</span>
+                <div style="flex:1;min-width:0;">
+                  <p class="text-sm fw-medium text-truncate">Mouse Inalámbrico Logitech M185</p>
+                  <p class="text-xs text-muted">205 unidades vendidas</p>
+                </div>
+                <span class="fw-semibold text-sm" style="white-space:nowrap;">S/. 18,430</span>
+              </div>
+              <!-- JSP: </c:forEach> -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================================================
+           TABLA REPORTE DE VENTAS MENSUAL
+           JSP: Datos de ReporteDAO.getResumenMensual()
+           ================================================ -->
+      <div class="card mb-8">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Reporte de Ventas por Mes</h3>
+            <p class="card-subtitle">Resumen detallado — Enero a Abril 2025</p>
+          </div>
+          <div class="card-actions">
+            <a href="#" class="btn btn-sm btn-secondary">
+              <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Exportar
+            </a>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table class="table table-report">
+            <thead>
+              <tr>
+                <th>Período</th>
+                <th class="col-num">N° Transacciones</th>
+                <th class="col-num">Subtotal</th>
+                <th class="col-num">Descuentos</th>
+                <th class="col-num">IGV (18%)</th>
+                <th class="col-num">Total Ventas</th>
+                <th class="col-num">Ticket Promedio</th>
+                <th class="col-center">Variación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- JSP: <c:forEach items="${resumenMensual}" var="r"> -->
+              <tr>
+                <!-- JSP: ${r.periodo} -->
+                <td><strong>Enero 2025</strong></td>
+                <!-- JSP: ${r.numTransacciones} -->
+                <td class="col-num">142</td>
+                <td class="col-num">S/. 32,372.88</td>
+                <td class="col-num text-danger">-S/. 820.00</td>
+                <td class="col-num">S/. 6,647.12</td>
+                <!-- JSP: ${r.totalVentas} -->
+                <td class="col-num fw-bold">S/. 38,200.00</td>
+                <td class="col-num">S/. 269.01</td>
+                <td class="col-center"><span class="badge badge-gray">Base</span></td>
+              </tr>
+              <tr>
+                <td><strong>Febrero 2025</strong></td>
+                <td class="col-num">156</td>
+                <td class="col-num">S/. 36,016.95</td>
+                <td class="col-num text-danger">-S/. 910.00</td>
+                <td class="col-num">S/. 7,393.05</td>
+                <td class="col-num fw-bold">S/. 42,500.00</td>
+                <td class="col-num">S/. 272.44</td>
+                <td class="col-center"><span class="badge badge-success">+11.3%</span></td>
+              </tr>
+              <tr>
+                <td><strong>Marzo 2025</strong></td>
+                <td class="col-num">198</td>
+                <td class="col-num">S/. 47,822.03</td>
+                <td class="col-num text-danger">-S/. 1,230.00</td>
+                <td class="col-num">S/. 9,837.97</td>
+                <td class="col-num fw-bold">S/. 56,430.00</td>
+                <td class="col-num">S/. 284.99</td>
+                <td class="col-center"><span class="badge badge-success">+32.8%</span></td>
+              </tr>
+              <tr>
+                <td><strong>Abril 2025</strong> <span class="badge badge-info" style="font-size:0.6rem;">Parcial</span></td>
+                <td class="col-num">157</td>
+                <td class="col-num">S/. 40,924.58</td>
+                <td class="col-num text-danger">-S/. 957.00</td>
+                <td class="col-num">S/. 8,322.42</td>
+                <td class="col-num fw-bold">S/. 48,290.00</td>
+                <td class="col-num">S/. 307.58</td>
+                <td class="col-center"><span class="badge badge-warning">-14.4%</span></td>
+              </tr>
+              <!-- JSP: </c:forEach> -->
+            </tbody>
+            <tfoot>
+              <tr>
+                <td><strong>TOTAL PERÍODO</strong></td>
+                <td class="col-num"><strong>653</strong></td>
+                <td class="col-num"><strong>S/. 157,136.44</strong></td>
+                <td class="col-num text-danger"><strong>-S/. 3,917.00</strong></td>
+                <td class="col-num"><strong>S/. 32,200.56</strong></td>
+                <!-- JSP: ${reporte.totalPeriodo} -->
+                <td class="col-num text-primary"><strong>S/. 185,420.00</strong></td>
+                <td class="col-num"><strong>S/. 284.00</strong></td>
+                <td class="col-center"><span class="badge badge-success">+22%</span></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <!-- ================================================
+           REPORTE: TOP CLIENTES
+           JSP: Datos de ReporteDAO.getTopClientes(10)
+           ================================================ -->
+      <div class="card mb-8">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Top 10 Mejores Clientes</h3>
+            <p class="card-subtitle">Por volumen total de compras en el período</p>
+          </div>
+          <div class="card-actions">
+            <a href="#" class="btn btn-sm btn-secondary">
+              <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Exportar
+            </a>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width:50px;text-align:center;">#</th>
+                <th>Cliente</th>
+                <th>Tipo</th>
+                <th class="col-num">N° Compras</th>
+                <th class="col-num">Total Comprado</th>
+                <th class="col-num">Ticket Promedio</th>
+                <th class="col-center">% del Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- JSP: <c:forEach items="${topClientes}" var="c" varStatus="i"> -->
+              <tr>
+                <td style="text-align:center;"><span class="fw-bold text-primary">1</span></td>
+                <td>
+                  <div class="cell-product">
+                    <div class="cell-product-thumb" style="background:var(--primary-100);color:var(--primary-700);border-radius:50%;">AT</div>
+                    <div>
+                      <!-- JSP: ${c.nombreCompleto} -->
+                      <p class="cell-product-name">Ana Torres Villanueva</p>
+                      <p class="cell-product-sku">RUC: 20512345678</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-info">Corporativo</span></td>
+                <!-- JSP: ${c.numCompras} -->
+                <td class="col-num">28</td>
+                <!-- JSP: ${c.totalComprado} -->
+                <td class="col-num fw-semibold text-success">S/. 18,450.00</td>
+                <td class="col-num">S/. 659.00</td>
+                <td class="col-center">
+                  <div style="display:flex;align-items:center;gap:var(--space-2);justify-content:flex-end;">
+                    <div class="progress" style="width:80px;"><div class="progress-bar" style="width:9.9%"></div></div>
+                    <!-- JSP: ${c.porcentajeDeltotal}% -->
+                    <span class="text-xs fw-medium">9.9%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align:center;"><span class="fw-bold" style="color:var(--gray-500);">2</span></td>
+                <td>
+                  <div class="cell-product">
+                    <div class="cell-product-thumb" style="background:var(--color-warning-light);color:var(--color-warning);border-radius:50%;">MG</div>
+                    <div>
+                      <p class="cell-product-name">María García López</p>
+                      <p class="cell-product-sku">DNI: 72345678</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-warning">VIP</span></td>
+                <td class="col-num">17</td>
+                <td class="col-num fw-semibold text-success">S/. 4,580.00</td>
+                <td class="col-num">S/. 269.00</td>
+                <td class="col-center">
+                  <div style="display:flex;align-items:center;gap:var(--space-2);justify-content:flex-end;">
+                    <div class="progress" style="width:80px;"><div class="progress-bar" style="width:2.5%"></div></div>
+                    <span class="text-xs fw-medium">2.5%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align:center;"><span class="fw-bold" style="color:var(--gray-500);">3</span></td>
+                <td>
+                  <div class="cell-product">
+                    <div class="cell-product-thumb" style="background:var(--color-success-light);color:var(--color-success);border-radius:50%;">CM</div>
+                    <div>
+                      <p class="cell-product-name">Carlos Mendoza Ríos</p>
+                      <p class="cell-product-sku">DNI: 45678912</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-primary">Frecuente</span></td>
+                <td class="col-num">12</td>
+                <td class="col-num fw-semibold text-success">S/. 2,130.50</td>
+                <td class="col-num">S/. 178.00</td>
+                <td class="col-center">
+                  <div style="display:flex;align-items:center;gap:var(--space-2);justify-content:flex-end;">
+                    <div class="progress" style="width:80px;"><div class="progress-bar" style="width:1.1%"></div></div>
+                    <span class="text-xs fw-medium">1.1%</span>
+                  </div>
+                </td>
+              </tr>
+              <!-- JSP: </c:forEach> -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ================================================
+           REPORTE: INVENTARIO ACTUAL
+           JSP: Datos de ProductoDAO.getEstadoInventario()
+           ================================================ -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Estado Actual del Inventario</h3>
+            <!-- JSP: Fecha de corte: hoy -->
+            <p class="card-subtitle">Corte al 08/04/2025 — Valor total del inventario</p>
+          </div>
+          <div class="card-actions">
+            <!-- JSP: ${valorTotalInventario} -->
+            <span class="badge badge-primary fw-bold" style="font-size:var(--text-sm);padding:var(--space-2) var(--space-4);">
+              Valor total: S/. 124,580.00
+            </span>
+            <a href="#" class="btn btn-sm btn-secondary">Exportar</a>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Producto / SKU</th>
+                <th>Categoría</th>
+                <th class="col-num">P. Compra</th>
+                <th class="col-num">P. Venta</th>
+                <th class="col-center">Stock</th>
+                <th class="col-num">Valor en Stock</th>
+                <th class="col-center">Nivel Stock</th>
+                <th class="col-center">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- JSP: <c:forEach items="${inventario}" var="p"> -->
+              <tr>
+                <td>
+                  <p class="text-sm fw-medium">Laptop HP ProBook 440</p>
+                  <p class="text-xs text-muted" style="font-family:var(--font-mono);">TECH-0032</p>
+                </td>
+                <td><span class="badge badge-primary">Electrónicos</span></td>
+                <td class="col-num">S/. 2,100.00</td>
+                <td class="col-num">S/. 2,890.00</td>
+                <td class="col-center"><span class="badge badge-danger">2</span></td>
+                <td class="col-num fw-semibold">S/. 4,200.00</td>
+                <td class="col-center">
+                  <div class="progress" style="width:80px;margin:0 auto;">
+                    <div class="progress-bar progress-bar-danger" style="width:20%"></div>
+                  </div>
+                </td>
+                <td class="col-center"><span class="badge badge-danger">Crítico</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="text-sm fw-medium">Mouse Inalámbrico Logitech M185</p>
+                  <p class="text-xs text-muted" style="font-family:var(--font-mono);">PERI-0015</p>
+                </td>
+                <td><span class="badge badge-info">Periféricos</span></td>
+                <td class="col-num">S/. 42.00</td>
+                <td class="col-num">S/. 89.90</td>
+                <td class="col-center"><span class="badge badge-warning">5</span></td>
+                <td class="col-num fw-semibold">S/. 210.00</td>
+                <td class="col-center">
+                  <div class="progress" style="width:80px;margin:0 auto;">
+                    <div class="progress-bar progress-bar-warning" style="width:33%"></div>
+                  </div>
+                </td>
+                <td class="col-center"><span class="badge badge-warning">Bajo</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="text-sm fw-medium">Audífonos Sony WH-1000XM5</p>
+                  <p class="text-xs text-muted" style="font-family:var(--font-mono);">AUD-0005</p>
+                </td>
+                <td><span class="badge badge-primary">Electrónicos</span></td>
+                <td class="col-num">S/. 750.00</td>
+                <td class="col-num">S/. 1,290.00</td>
+                <td class="col-center"><span class="badge badge-success">28</span></td>
+                <td class="col-num fw-semibold">S/. 21,000.00</td>
+                <td class="col-center">
+                  <div class="progress" style="width:80px;margin:0 auto;">
+                    <div class="progress-bar" style="width:93%"></div>
+                  </div>
+                </td>
+                <td class="col-center"><span class="badge badge-success">Normal</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="text-sm fw-medium">Monitor Samsung 24" FHD IPS</p>
+                  <p class="text-xs text-muted" style="font-family:var(--font-mono);">MON-0008</p>
+                </td>
+                <td><span class="badge badge-warning">Monitores</span></td>
+                <td class="col-num">S/. 580.00</td>
+                <td class="col-num">S/. 890.00</td>
+                <td class="col-center"><span class="badge badge-warning">3</span></td>
+                <td class="col-num fw-semibold">S/. 1,740.00</td>
+                <td class="col-center">
+                  <div class="progress" style="width:80px;margin:0 auto;">
+                    <div class="progress-bar progress-bar-warning" style="width:38%"></div>
+                  </div>
+                </td>
+                <td class="col-center"><span class="badge badge-warning">Bajo</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="text-sm fw-medium">Teclado Mecánico RGB Redragon K552</p>
+                  <p class="text-xs text-muted" style="font-family:var(--font-mono);">PERI-0020</p>
+                </td>
+                <td><span class="badge badge-info">Periféricos</span></td>
+                <td class="col-num">S/. 95.00</td>
+                <td class="col-num">S/. 185.00</td>
+                <td class="col-center"><span class="badge badge-danger">0</span></td>
+                <td class="col-num fw-semibold">S/. 0.00</td>
+                <td class="col-center">
+                  <div class="progress" style="width:80px;margin:0 auto;">
+                    <div class="progress-bar progress-bar-danger" style="width:0%"></div>
+                  </div>
+                </td>
+                <td class="col-center"><span class="badge badge-danger">Agotado</span></td>
+              </tr>
+              <!-- JSP: </c:forEach> -->
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5"><strong>VALOR TOTAL DEL INVENTARIO</strong></td>
+                <!-- JSP: ${valorTotalInventario} -->
+                <td class="col-num text-primary"><strong>S/. 124,580.00</strong></td>
+                <td colspan="2"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

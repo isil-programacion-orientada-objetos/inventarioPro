@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ventas — InventarioPro</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/tables.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <a href="dashboard.html" class="sidebar-brand">
+      <div class="sidebar-brand-icon">IP</div>
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-name">InventarioPro</span>
+        <span class="sidebar-brand-tagline">Gestión Empresarial</span>
+      </div>
+    </a>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Principal</span>
+        <div class="sidebar-item">
+          <a href="dashboard.html" class="sidebar-link">
+            <span class="sidebar-link-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
+            <span>Dashboard</span>
+          </a>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Gestión</span>
+        <div class="sidebar-item">
+          <a href="productos.html" class="sidebar-link">
+            <span class="sidebar-link-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span>
+            <span>Productos</span>
+          </a>
+        </div>
+        <div class="sidebar-item">
+          <a href="clientes.html" class="sidebar-link">
+            <span class="sidebar-link-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <span>Clientes</span>
+          </a>
+        </div>
+        <div class="sidebar-item">
+          <a href="ventas.html" class="sidebar-link active">
+            <span class="sidebar-link-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+            <span>Ventas</span>
+            <span class="sidebar-link-badge">3</span>
+          </a>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Análisis</span>
+        <div class="sidebar-item">
+          <a href="reportes.html" class="sidebar-link">
+            <span class="sidebar-link-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
+            <span>Reportes</span>
+          </a>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Sistema</span>
+        <div class="sidebar-item">
+          <a href="login.html" class="sidebar-link">
+            <span class="sidebar-link-icon"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span>
+            <span>Cerrar Sesión</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar">AV</div>
+        <div class="sidebar-user-info">
+          <!-- JSP: ${sessionScope.currentUser.nombre} -->
+          <span class="sidebar-user-name">Administrador</span>
+          <span class="sidebar-user-role">Administrador del Sistema</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="main-wrapper">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="btn-menu-toggle" id="menuToggle" type="button">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div>
+          <h1 class="topbar-title">Ventas</h1>
+          <nav class="topbar-breadcrumb">
+            <a href="dashboard.html">Inicio</a>
+            <span class="topbar-breadcrumb-sep">/</span>
+            <a href="#">Gestión</a>
+            <span class="topbar-breadcrumb-sep">/</span>
+            <span>Ventas</span>
+          </nav>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <span class="topbar-search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+          <input type="text" class="topbar-search-input" placeholder="Buscar...">
+        </div>
+        <a href="login.html" class="topbar-user">
+          <div class="topbar-avatar">AV</div>
+          <span class="topbar-user-name hide-mobile">Administrador</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <!-- Page header -->
+      <div class="page-header">
+        <div class="page-header-info">
+          <h2 class="page-title">Registro de Ventas</h2>
+          <!-- JSP: Mes y año actual -->
+          <p class="page-subtitle">Gestión de transacciones y comprobantes — Abril 2025</p>
+        </div>
+        <div class="page-actions">
+          <a href="reportes.html" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            Ver Reportes
+          </a>
+          <a href="#form-nueva-venta" class="btn btn-primary">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Registrar Venta
+          </a>
+        </div>
+      </div>
+
+      <!-- KPIs ventas -->
+      <div class="content-grid grid-cols-4 mb-8">
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon icon-green"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+            <span class="stat-trend trend-up"><span class="trend-arrow-up"></span> +18%</span>
+          </div>
+          <!-- JSP: ${totalVentasMes} -->
+          <div class="stat-card-value">S/. 48,290</div>
+          <div class="stat-card-label">Ventas del mes</div>
+          <div class="stat-card-footer">Meta: S/. 60,000</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          </div>
+          <!-- JSP: ${totalTransaccionesMes} -->
+          <div class="stat-card-value">170</div>
+          <div class="stat-card-label">Transacciones</div>
+          <div class="stat-card-footer">17 hoy</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon icon-yellow"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+          </div>
+          <!-- JSP: ${ticketPromedio} -->
+          <div class="stat-card-value">S/. 284</div>
+          <div class="stat-card-label">Ticket promedio</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-card-icon icon-red"><svg viewBox="0 0 24 24"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg></div>
+            <span class="stat-trend trend-down"><span class="trend-arrow-down"></span> 3</span>
+          </div>
+          <!-- JSP: ${totalDevoluciones} -->
+          <div class="stat-card-value">3</div>
+          <div class="stat-card-label">Devoluciones</div>
+          <div class="stat-card-footer" style="color:var(--color-danger);">S/. 135.00 devuelto</div>
+        </div>
+      </div>
+
+      <!-- ================================================
+           FORMULARIO NUEVA VENTA
+           JSP: action="${pageContext.request.contextPath}/ventas/crear" method="POST"
+           ================================================ -->
+      <div class="card mb-8" id="form-nueva-venta">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Registrar Nueva Venta</h3>
+            <!-- JSP: Número auto-generado: VTA-${siguienteNumero} -->
+            <p class="card-subtitle">Comprobante: <strong>VTA-00146</strong></p>
+          </div>
+          <div class="card-actions">
+            <!-- JSP: Fecha del servidor -->
+            <span class="text-sm text-muted">08/04/2025 09:30</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <form action="#" method="post">
+            <!-- JSP: <input type="hidden" name="numeroVenta" value="VTA-${siguienteNumero}"> -->
+
+            <div class="form-section">
+              <p class="form-section-title">Datos de la Venta</p>
+              <div class="form-grid form-grid-3">
+                <div class="form-group">
+                  <label class="form-label form-label-required" for="clienteId">Cliente</label>
+                  <!-- JSP: Poblado desde ClienteDAO.findAll() -->
+                  <!-- JSP: name="clienteId" value="${venta.cliente.id}" -->
+                  <select id="clienteId" name="clienteId" class="form-control">
+                    <option value="">— Seleccionar cliente —</option>
+                    <!-- JSP: <c:forEach items="${clientes}" var="c"> -->
+                    <option value="1">María García López — DNI: 72345678</option>
+                    <option value="2">Carlos Mendoza Ríos — DNI: 45678912</option>
+                    <option value="3">Ana Torres Villanueva — RUC: 20512345678</option>
+                    <option value="4">Roberto Silva Paredes — DNI: 31456789</option>
+                    <!-- JSP: </c:forEach> -->
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label form-label-required" for="fechaVenta">Fecha de Venta</label>
+                  <!-- JSP: name="fechaVenta" value="${today}" -->
+                  <input type="date" id="fechaVenta" name="fechaVenta" class="form-control" value="2025-04-08">
+                </div>
+                <div class="form-group">
+                  <label class="form-label form-label-required" for="metodoPago">Método de Pago</label>
+                  <!-- JSP: name="metodoPago" -->
+                  <select id="metodoPago" name="metodoPago" class="form-control">
+                    <option value="EFECTIVO">Efectivo</option>
+                    <option value="TARJETA">Tarjeta de Crédito/Débito</option>
+                    <option value="TRANSFERENCIA">Transferencia Bancaria</option>
+                    <option value="YAPE">Yape / Plin</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="tipoComprobante">Tipo de Comprobante</label>
+                  <select id="tipoComprobante" name="tipoComprobante" class="form-control">
+                    <option value="BOLETA">Boleta de Venta</option>
+                    <option value="FACTURA">Factura</option>
+                    <option value="TICKET">Ticket</option>
+                  </select>
+                </div>
+                <div class="form-group form-col-span-2">
+                  <label class="form-label" for="observaciones">Observaciones</label>
+                  <!-- JSP: name="observaciones" -->
+                  <input type="text" id="observaciones" name="observaciones" class="form-control" placeholder="Notas adicionales de la venta...">
+                </div>
+              </div>
+            </div>
+
+            <!-- Detalle de productos de la venta -->
+            <div class="form-section">
+              <p class="form-section-title">Detalle de Productos</p>
+
+              <!-- JSP: <c:forEach items="${venta.detalles}" var="det" varStatus="i"> -->
+              <!-- Línea de producto (repetir con JSP forEach) -->
+              <div class="table-wrapper" style="border:1px solid var(--color-border); border-radius:var(--radius-lg); overflow:hidden; margin-bottom:var(--space-4);">
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th style="width:40%">Producto</th>
+                      <th class="col-num">Precio Unit.</th>
+                      <th class="col-center" style="width:100px">Cantidad</th>
+                      <th class="col-num">Descuento</th>
+                      <th class="col-num">Subtotal</th>
+                      <th style="width:40px;text-align:center;">—</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Fila 1 -->
+                    <tr>
+                      <td>
+                        <!-- JSP: name="detalles[0].productoId" -->
+                        <select class="form-control" style="height:34px;font-size:var(--text-xs);">
+                          <option value="">— Seleccionar producto —</option>
+                          <!-- JSP: <c:forEach items="${productos}" var="p"> -->
+                          <option value="1" selected>Laptop HP ProBook 440 (Stock: 2)</option>
+                          <option value="2">Mouse Inalámbrico Logitech M185 (Stock: 5)</option>
+                          <option value="3">Monitor Samsung 24" (Stock: 3)</option>
+                          <!-- JSP: </c:forEach> -->
+                        </select>
+                      </td>
+                      <td class="col-num">
+                        <!-- JSP: name="detalles[0].precioUnitario" value="${det.precioUnitario}" -->
+                        <div class="input-addon-group">
+                          <span class="input-addon" style="padding:0 var(--space-2);font-size:var(--text-xs);">S/.</span>
+                          <input type="number" class="form-control" style="height:34px;" value="2890.00" step="0.01">
+                        </div>
+                      </td>
+                      <td>
+                        <!-- JSP: name="detalles[0].cantidad" value="${det.cantidad}" -->
+                        <input type="number" class="form-control col-center" style="height:34px;text-align:center;" value="1" min="1">
+                      </td>
+                      <td class="col-num">
+                        <!-- JSP: name="detalles[0].descuento" -->
+                        <div class="input-addon-group">
+                          <input type="number" class="form-control" style="height:34px;border-radius:var(--radius-lg) 0 0 var(--radius-lg);border-right:none;" value="0" min="0" max="100">
+                          <span class="input-addon input-addon-right" style="padding:0 var(--space-2);font-size:var(--text-xs);">%</span>
+                        </div>
+                      </td>
+                      <!-- JSP: Calculado en backend: det.cantidad * det.precioUnitario * (1 - det.descuento/100) -->
+                      <td class="col-num fw-semibold">S/. 2,890.00</td>
+                      <td style="text-align:center;">
+                        <button type="button" class="table-action-btn delete" style="width:26px;height:26px;">
+                          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        </button>
+                      </td>
+                    </tr>
+                    <!-- Fila 2 -->
+                    <tr>
+                      <td>
+                        <select class="form-control" style="height:34px;font-size:var(--text-xs);">
+                          <option value="">— Seleccionar producto —</option>
+                          <option value="2" selected>Mouse Inalámbrico Logitech M185 (Stock: 5)</option>
+                        </select>
+                      </td>
+                      <td class="col-num">
+                        <div class="input-addon-group">
+                          <span class="input-addon" style="padding:0 var(--space-2);font-size:var(--text-xs);">S/.</span>
+                          <input type="number" class="form-control" style="height:34px;" value="89.90" step="0.01">
+                        </div>
+                      </td>
+                      <td><input type="number" class="form-control" style="height:34px;text-align:center;" value="2" min="1"></td>
+                      <td class="col-num">
+                        <div class="input-addon-group">
+                          <input type="number" class="form-control" style="height:34px;border-radius:var(--radius-lg) 0 0 var(--radius-lg);border-right:none;" value="5" min="0" max="100">
+                          <span class="input-addon input-addon-right" style="padding:0 var(--space-2);font-size:var(--text-xs);">%</span>
+                        </div>
+                      </td>
+                      <td class="col-num fw-semibold">S/. 170.81</td>
+                      <td style="text-align:center;">
+                        <button type="button" class="table-action-btn delete" style="width:26px;height:26px;">
+                          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- JSP: </c:forEach> -->
+
+              <button type="button" class="btn btn-outline btn-sm">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Agregar producto
+              </button>
+            </div>
+
+            <!-- Totales -->
+            <div style="display:flex;justify-content:flex-end;margin-top:var(--space-6);">
+              <div style="width:320px;">
+                <div class="info-row">
+                  <span class="info-label">Subtotal</span>
+                  <!-- JSP: ${venta.subtotal} -->
+                  <span class="info-value">S/. 3,060.81</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Descuento total</span>
+                  <!-- JSP: ${venta.descuentoTotal} -->
+                  <span class="info-value text-danger">-S/. 9.09</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">IGV (18%)</span>
+                  <!-- JSP: ${venta.igv} -->
+                  <span class="info-value">S/. 550.95</span>
+                </div>
+                <div class="info-row" style="border-top:2px solid var(--color-border);padding-top:var(--space-3);">
+                  <span class="fw-bold" style="font-size:var(--text-base);">Total a Cobrar</span>
+                  <!-- JSP: ${venta.total} -->
+                  <span class="fw-bold text-primary" style="font-size:var(--text-xl);">S/. 3,611.76</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex align-center gap-3 mt-6" style="justify-content:flex-end;">
+              <button type="reset" class="btn btn-secondary">Cancelar</button>
+              <button type="submit" name="accion" value="guardar" class="btn btn-secondary">
+                <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                Guardar borrador
+              </button>
+              <!-- JSP: Confirmar venta actualiza stock en ProductoDAO -->
+              <button type="submit" name="accion" value="confirmar" class="btn btn-primary">
+                <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                Confirmar Venta
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Historial de ventas -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Historial de Ventas</h3>
+          </div>
+          <div class="card-actions">
+            <!-- JSP: ${totalVentasRegistradas} -->
+            <span class="badge badge-primary">145 registros</span>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div style="padding: 0 var(--space-6); border-bottom: 1px solid var(--color-border);">
+          <div class="tabs" style="border-bottom:none;">
+            <a href="#" class="tab-item active">Todas</a>
+            <a href="#" class="tab-item">Confirmadas</a>
+            <a href="#" class="tab-item">Pendientes</a>
+            <a href="#" class="tab-item">Anuladas</a>
+            <a href="#" class="tab-item">Devoluciones</a>
+          </div>
+        </div>
+
+        <!-- Toolbar filtros -->
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <div class="search-input-group">
+              <span class="search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+              <!-- JSP: name="q" value="${param.q}" -->
+              <input type="text" class="form-control" placeholder="Buscar por número, cliente...">
+            </div>
+            <!-- JSP: name="fechaDesde" -->
+            <input type="date" class="filter-select" value="2025-04-01" style="width:auto;">
+            <!-- JSP: name="fechaHasta" -->
+            <input type="date" class="filter-select" value="2025-04-08" style="width:auto;">
+            <select class="filter-select">
+              <option value="">Todos los métodos</option>
+              <option>Efectivo</option>
+              <option>Tarjeta</option>
+              <option>Transferencia</option>
+              <option>Yape / Plin</option>
+            </select>
+          </div>
+          <div class="toolbar-right">
+            <a href="#" class="btn btn-sm btn-secondary">
+              <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Exportar
+            </a>
+          </div>
+        </div>
+
+        <!-- Tabla historial -->
+        <!-- JSP: Lista cargada desde VentaDAO.findByFiltros() -->
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="col-check"><input type="checkbox" class="table-check"></th>
+                <th>N° Venta</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Método Pago</th>
+                <th>Comprobante</th>
+                <th class="col-num">Total</th>
+                <th class="col-center">Estado</th>
+                <th class="col-action">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- JSP: <c:forEach items="${ventas}" var="v"> -->
+
+              <tr>
+                <td class="col-check"><input type="checkbox" class="table-check"></td>
+                <!-- JSP: ${v.numeroVenta} -->
+                <td><span class="text-sm fw-semibold" style="font-family:var(--font-mono);">VTA-00145</span></td>
+                <td>
+                  <!-- JSP: ${v.cliente.nombreCompleto} -->
+                  <p class="text-sm fw-medium">María García López</p>
+                  <p class="text-xs text-muted">DNI: 72345678</p>
+                </td>
+                <!-- JSP: <fmt:formatDate value="${v.fechaVenta}" pattern="dd/MM/yyyy HH:mm"/> -->
+                <td><span class="text-sm">08/04/2025</span><br><span class="text-xs text-muted">09:14</span></td>
+                <td><span class="badge badge-gray">Efectivo</span></td>
+                <td><span class="badge badge-primary">Boleta</span></td>
+                <!-- JSP: <fmt:formatNumber value="${v.total}" type="currency" currencySymbol="S/."/> -->
+                <td class="col-num fw-semibold text-success">S/. 350.00</td>
+                <!-- JSP: ${v.estado} -->
+                <td class="col-center"><span class="badge badge-success"><span class="badge-dot"></span> Confirmada</span></td>
+                <td>
+                  <div class="table-actions">
+                    <a href="#" class="table-action-btn view" data-tooltip="Ver detalle">
+                      <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </a>
+                    <a href="#" class="table-action-btn edit" data-tooltip="Imprimir">
+                      <svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    </a>
+                    <a href="#" class="table-action-btn delete" data-tooltip="Anular">
+                      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="col-check"><input type="checkbox" class="table-check"></td>
+                <td><span class="text-sm fw-semibold" style="font-family:var(--font-mono);">VTA-00144</span></td>
+                <td>
+                  <p class="text-sm fw-medium">Carlos Mendoza Ríos</p>
+                  <p class="text-xs text-muted">DNI: 45678912</p>
+                </td>
+                <td><span class="text-sm">08/04/2025</span><br><span class="text-xs text-muted">08:30</span></td>
+                <td><span class="badge badge-primary">Tarjeta</span></td>
+                <td><span class="badge badge-primary">Boleta</span></td>
+                <td class="col-num fw-semibold text-success">S/. 125.50</td>
+                <td class="col-center"><span class="badge badge-success"><span class="badge-dot"></span> Confirmada</span></td>
+                <td>
+                  <div class="table-actions">
+                    <a href="#" class="table-action-btn view"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a>
+                    <a href="#" class="table-action-btn edit"><svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></a>
+                    <a href="#" class="table-action-btn delete"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></a>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="col-check"><input type="checkbox" class="table-check"></td>
+                <td><span class="text-sm fw-semibold" style="font-family:var(--font-mono);">VTA-00143</span></td>
+                <td>
+                  <p class="text-sm fw-medium">Ana Torres Villanueva</p>
+                  <p class="text-xs text-muted">RUC: 20512345678</p>
+                </td>
+                <td><span class="text-sm">07/04/2025</span><br><span class="text-xs text-muted">17:45</span></td>
+                <td><span class="badge badge-info">Transferencia</span></td>
+                <td><span class="badge badge-warning">Factura</span></td>
+                <td class="col-num fw-semibold text-success">S/. 890.00</td>
+                <td class="col-center"><span class="badge badge-warning">Pendiente</span></td>
+                <td>
+                  <div class="table-actions">
+                    <a href="#" class="table-action-btn view"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a>
+                    <a href="#" class="table-action-btn edit"><svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></a>
+                    <a href="#" class="table-action-btn delete"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></a>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="col-check"><input type="checkbox" class="table-check"></td>
+                <td><span class="text-sm fw-semibold" style="font-family:var(--font-mono);">VTA-00141</span></td>
+                <td>
+                  <p class="text-sm fw-medium">Patricia Luna Castillo</p>
+                  <p class="text-xs text-muted">DNI: 29876543</p>
+                </td>
+                <td><span class="text-sm">07/04/2025</span><br><span class="text-xs text-muted">11:05</span></td>
+                <td><span class="badge badge-gray">Efectivo</span></td>
+                <td><span class="badge badge-primary">Boleta</span></td>
+                <td class="col-num fw-semibold text-danger">-S/. 45.00</td>
+                <td class="col-center"><span class="badge badge-danger">Devuelta</span></td>
+                <td>
+                  <div class="table-actions">
+                    <a href="#" class="table-action-btn view"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a>
+                    <a href="#" class="table-action-btn edit"><svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></a>
+                    <a href="#" class="table-action-btn delete"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></a>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- JSP: </c:forEach> -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Paginación -->
+        <div class="pagination">
+          <p class="pagination-info">
+            Mostrando <strong>1 – 4</strong> de <strong>145</strong> ventas
+          </p>
+          <div class="pagination-nav">
+            <a href="#" class="page-btn disabled"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <a href="#" class="page-btn active">1</a>
+            <a href="#" class="page-btn">2</a>
+            <a href="#" class="page-btn">3</a>
+            <span class="page-btn" style="border:none;background:none;">...</span>
+            <a href="#" class="page-btn">37</a>
+            <a href="#" class="page-btn"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>
